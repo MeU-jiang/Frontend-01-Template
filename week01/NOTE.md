@@ -162,6 +162,13 @@
         - Reference
         - Completion Record
         - ....(在ecma中找到)
+        - List
+        - Set
+        - Property Descriptor
+        - Lexical Environment
+        - Environment Record
+        - abstract closure
+        - Data Block
     - 执行过程(ECMA中8.6)
       - Job
       - Script/Module
