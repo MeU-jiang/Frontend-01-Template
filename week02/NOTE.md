@@ -1,7 +1,9 @@
 # 每周总结可以写在这里
-
-
-
+这周学习了编程语言通识和js的语言设计，词法和类型。
+学会了一些通过产生式理解乔姆斯基谱系
+了解了图灵完备性
+知道了码点是对字符的编码规则
+学会了Token的Punctuator和Keywords和IdentifierName和Literal
 
 
 - 作业：
