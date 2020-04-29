@@ -1,13 +1,12 @@
 # 每周总结可以写在这里
 
-1、写一个String转Number的函数 convertStringToNumber
 function hexConversion(number){
 	if(number>=17 &&number<=22){
 		return number-7;
 	} else if(number>=49 && number<=54){
 		return number-39;	
 	}
-} 
+}
 function convertStringToNumber(string, radix){
 	if(arguments.length <2)
 		radix=10;
