@@ -7,7 +7,7 @@ function hexConversion(number){
 	} else if(number>=49 && number<=54){
 		return number-39;	
 	}
-}
+} 
 function convertStringToNumber(string, radix){
 	if(arguments.length <2)
 		radix=10;
