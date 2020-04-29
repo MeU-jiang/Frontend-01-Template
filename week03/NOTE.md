@@ -21,3 +21,4 @@ function convertStringToNumber(str, radix = 10) {
   }
   return [num, fraction, exNum];
 }
+ 
