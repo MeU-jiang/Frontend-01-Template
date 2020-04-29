@@ -21,3 +21,24 @@
 -     }
 -     return [num, fraction, exNum];
 -   }
+
+-    function convertNumberToString (number, x) {
+-      let integer = Math.floor(number);
+-      let fraction = number - integer;
+-      console.log('fraction', fraction);
+-      let string = '';
+-      while(integer > 0) {
+-        string = String(integer % x) + string;
+-        integer = Math.floor(integer / x);
+-      }
+-      if (fraction) {
+-        string = string + '.';
+-      }
+-      while(fraction > 0) {
+-        let flag = Math.floor(fraction * x);
+-        string += String(flag);
+-        fraction =  fraction * x - Math.floor(fraction * x);
+-      }
+-      return string;
+-    }
+-    console.log(convertNumberToString(122.121, 10));
