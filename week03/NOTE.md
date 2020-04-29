@@ -1,62 +1,23 @@
 # 每周总结可以写在这里
 
-function hexConversion(number){
-	if(number>=17 &&number<=22){
-		return number-7;
-	} else if(number>=49 && number<=54){
-		return number-39;	
-	}
+function convertStringToNumber(str, radix = 10) {
+  let num = 0;
+  let fraction = 0;
+  let hasEx = /[eE](\d+)/g.test(str);
+  let exNum = hasEx ? +/[eE](\d+)/g.exec(str)[1] : 1;
+  let exIndex = hasEx ? /[eE](\d+)/g.exec(str).index : str.length;
+  let isFloat = str.includes('.');
+  let dotIndex = isFloat ? str.indexOf('.') : str.length;
+  function getCodePoint(s) {
+    return s.codePointAt(0);
+  }
+  for (let i = 0; i < dotIndex; i++) {
+    num *= radix;
+    num += getCodePoint(str[i]) - getCodePoint('0');
+  }
+  for (let i = dotIndex + 1; i < exIndex; i++) {
+    fraction *= radix;
+    fraction += getCodePoint(str[i]) - getCodePoint('0');
+  }
+  return [num, fraction, exNum];
 }
-function convertStringToNumber(string, radix){
-	if(arguments.length <2)
-		radix=10;
-	let flag=/e|E/.test(string);
-	
-	if(flag){
-		//对科学计数法的字符串单独处理
-        let logNumber = Number(string.match(/\d+$/)[0]);
-        let number = string.match(/^[\d\.]+/)[0].replace(/\./, '');
-        if (/e-|E-/.test(string)) {
-          return Number(number.padEnd(logNumber + 1, 0));
-        } else {
-          return Number(number.padStart(logNumber + number.length, 0).replace(/^0/, '0.'));
-        }
-		
-	} else{
-	
-		//处理进制问题
-		let chars = string.split('');
-		let number = 0,i=0;
-		
-        while(i<chars.length && chars[i]!=='.'){
-            number=number*radix;
-            let temp=chars[i].codePointAt(0) - '0'.codePointAt(0);
-            if(temp>9){
-            	number+=hexConversion(temp);
-            } else{
-            	number += temp;
-            }
-            i++;
-        }
-        
-        if(chars[i]=='.')  i++;
-        
-        let fraction=1;
-        
-        while(i<chars.length){
-            fraction = fraction/radix;
-            let temp=chars[i].codePointAt(0) - '0'.codePointAt(0);
-            if(temp>9){
-            	number+=(hexConversion(temp))*fraction;
-            } else{
-            	number += temp*fraction;
-            }
-            i++;
-        }	
-        
-        return number;
-		
-	}
-}
-
-//convertStringToNumber('100',8);
